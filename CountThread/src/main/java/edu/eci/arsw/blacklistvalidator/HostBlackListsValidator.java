@@ -5,6 +5,8 @@
  */
 package main.java.edu.eci.arsw.blacklistvalidator;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
+import java.util.ArrayList;
 import main.java.edu.eci.arsw.spamkeywordsdatasource.HostBlacklistsDataSourceFacade;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +20,11 @@ import java.util.logging.Logger;
 public class HostBlackListsValidator {
 
     private static final int BLACK_LIST_ALARM_COUNT=5;
+    private List<Thread> listaThreads = new ArrayList<Thread>();
+    private int minimo = 0;
+    private int maximo;
+    private int maximoEstandar;
+    private int conteoResidual = 0;
     
     /**
      * Check the given host's IP address in all the available black lists,
@@ -29,13 +36,33 @@ public class HostBlackListsValidator {
      * @param ipaddress suspicious host's IP address.
      * @return  Blacklists numbers where the given host's IP address was found.
      */
-    public List<Integer> checkHost(String ipaddress){
+    public List<Integer> checkHost(String ipaddress, int N){
         
+        HostBlacklistsDataSourceFacade skds=HostBlacklistsDataSourceFacade.getInstance();
+        int tamanioServer = skds.getRegisteredServersCount();
+        if (N > tamanioServer){
+            N = tamanioServer;
+        }
+        if(tamanioServer%N != 0){
+            maximoEstandar = tamanioServer/N;
+            conteoResidual = tamanioServer%N;
+        }    
+        else{
+            maximoEstandar = tamanioServer/N;
+        }
+        for(int i = 1; i <= conteoResidual; i++){
+            String nombre = "thread#" + i;
+            
+        }
+        for(int i = 1; i <= N; i++){
+            String nombre = "thread#" + i;
+            
+        }
         LinkedList<Integer> blackListOcurrences=new LinkedList<>();
         
         int ocurrencesCount=0;
         
-        HostBlacklistsDataSourceFacade skds=HostBlacklistsDataSourceFacade.getInstance();
+        
         
         int checkedListsCount=0;
         
