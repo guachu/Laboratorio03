@@ -46,14 +46,18 @@ public class HostBlackListsValidator {
         if(tamanioServer%N != 0){
             maximoEstandar = tamanioServer/N;
             conteoResidual = tamanioServer%N;
+            maximo = maximoEstandar +1;
         }    
         else{
             maximoEstandar = tamanioServer/N;
         }
         for(int i = 1; i <= conteoResidual; i++){
             String nombre = "thread#" + i;
-            
+            Thread nodo = new Thread(nombre, minimo, maximo);
+//            minimo = maximo+1;
+//            maximo+= maximo;
         }
+        
         for(int i = 1; i <= N; i++){
             String nombre = "thread#" + i;
             
