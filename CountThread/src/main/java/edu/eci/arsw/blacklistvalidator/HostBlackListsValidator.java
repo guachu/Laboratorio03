@@ -20,12 +20,12 @@ import java.util.logging.Logger;
 public class HostBlackListsValidator {
 
     private static final int BLACK_LIST_ALARM_COUNT=5;
-    private List<Thread> listaThreads = new ArrayList<Thread>();
+    private List<ThreadC> listaThreads = new ArrayList<ThreadC>();
     private int minimo = 0;
     private int maximo;
     private int maximoEstandar;
     private int conteoResidual = 0;
-    
+    LinkedList<Integer> blackListOcurrences=new LinkedList<>();
     /**
      * Check the given host's IP address in all the available black lists,
      * and report it as NOT Trustworthy when such IP was reported in at least
@@ -47,39 +47,53 @@ public class HostBlackListsValidator {
             maximoEstandar = tamanioServer/N;
             conteoResidual = tamanioServer%N;
             maximo = maximoEstandar +1;
-        }    
+        }
         else{
             maximoEstandar = tamanioServer/N;
         }
+        System.out.println(maximoEstandar);
+        System.out.println(conteoResidual);
         for(int i = 1; i <= conteoResidual; i++){
             String nombre = "thread#" + i;
-            Thread nodo = new Thread(nombre, minimo, maximo);
-//            minimo = maximo+1;
-//            maximo+= maximo;
+            ThreadC nodo = new ThreadC(nombre, minimo, maximo,ipaddress, blackListOcurrences);
+            minimo = maximo;
+            maximo+= maximoEstandar +1;
+            listaThreads.add(nodo);
+        }
+        maximo-=1;
+        for(int i = 1; i <= (N-conteoResidual); i++){
+            String nombre = "thread#" + (i+conteoResidual);
+            ThreadC nodo = new ThreadC(nombre, minimo, maximo,ipaddress, blackListOcurrences);
+            minimo = maximo;
+            maximo += maximoEstandar;
+            listaThreads.add(nodo);
         }
         
-        for(int i = 1; i <= N; i++){
-            String nombre = "thread#" + i;
-            
-        }
-        LinkedList<Integer> blackListOcurrences=new LinkedList<>();
         
-        int ocurrencesCount=0;
-        
-        
-        
-        int checkedListsCount=0;
-        
-        for (int i=0;i<skds.getRegisteredServersCount() && ocurrencesCount<BLACK_LIST_ALARM_COUNT;i++){
-            checkedListsCount++;
-            
-            if (skds.isInBlackListServer(i, ipaddress)){
-                
-                blackListOcurrences.add(i);
-                
-                ocurrencesCount++;
+        for(ThreadC i : listaThreads) {
+            try{
+                i.join(); 
+            }catch(InterruptedException e){
+                System.out.println(e);
             }
-        }
+        };
+        
+        
+        
+        int ocurrencesCount=  ThreadC.Ask();
+
+        int checkedListsCount= ThreadC.AskLists();
+        
+//        for (int i=0;i<skds.getRegisteredServersCount() && ocurrencesCount<BLACK_LIST_ALARM_COUNT;i++){
+//            checkedListsCount++;
+//            
+//            if (skds.isInBlackListServer(i, ipaddress)){
+//                
+//                blackListOcurrences.add(i);
+//                
+//                ocurrencesCount++;
+//            }
+//        }
         
         if (ocurrencesCount>=BLACK_LIST_ALARM_COUNT){
             skds.reportAsNotTrustworthy(ipaddress);
