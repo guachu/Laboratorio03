@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/2124203/Documents/NetBeansProjects/CountThread/src/main/java/edu/eci/arsw/threads/CountThread.java</file>
-            <file>file:/C:/Users/2124203/Documents/NetBeansProjects/CountThread/src/main/java/edu/eci/arsw/blacklistvalidator/Thread.java</file>
-            <file>file:/C:/Users/2124203/Documents/NetBeansProjects/CountThread/src/main/java/edu/eci/arsw/blacklistvalidator/Main.java</file>
-            <file>file:/C:/Users/2124203/Documents/NetBeansProjects/CountThread/src/main/java/edu/eci/arsw/threads/CountMainThreads.java</file>
-            <file>file:/C:/Users/2124203/Documents/NetBeansProjects/CountThread/src/main/java/edu/eci/arsw/spamkeywordsdatasource/HostBlacklistsDataSourceFacade.java</file>
-            <file>file:/C:/Users/2124203/Documents/NetBeansProjects/CountThread/src/main/java/edu/eci/arsw/blacklistvalidator/HostBlackListsValidator.java</file>
+            <file>file:/C:/Users/jfmor/Desktop/semestre%207/ARSW/Laboratorio03-master/CountThread/src/main/java/edu/eci/arsw/blacklistvalidator/Main.java</file>
+            <file>file:/C:/Users/jfmor/Desktop/semestre%207/ARSW/Laboratorio03-master/CountThread/src/main/java/edu/eci/arsw/blacklistvalidator/ThreadC.java</file>
+            <file>file:/C:/Users/jfmor/Desktop/semestre%207/ARSW/Laboratorio03-master/CountThread/src/main/java/edu/eci/arsw/blacklistvalidator/HostBlackListsValidator.java</file>
         </group>
     </open-files>
 </project-private>

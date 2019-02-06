@@ -50,17 +50,19 @@ public class HostBlackListsValidator {
         }
         else{
             maximoEstandar = tamanioServer/N;
+            maximo = maximoEstandar;
         }
-        System.out.println(maximoEstandar);
-        System.out.println(conteoResidual);
         for(int i = 1; i <= conteoResidual; i++){
             String nombre = "thread#" + i;
             ThreadC nodo = new ThreadC(nombre, minimo, maximo,ipaddress, blackListOcurrences);
             minimo = maximo;
             maximo+= maximoEstandar +1;
             listaThreads.add(nodo);
+            if(i == conteoResidual){
+                maximo-=1;
+            }
         }
-        maximo-=1;
+        
         for(int i = 1; i <= (N-conteoResidual); i++){
             String nombre = "thread#" + (i+conteoResidual);
             ThreadC nodo = new ThreadC(nombre, minimo, maximo,ipaddress, blackListOcurrences);
