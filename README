@@ -11,3 +11,11 @@ Lo que modificariamos seria agregar un valor global el cual se encargue de lleva
 se detengan todos los threads
 What new element would this bring to the problem?
 El problema seria que no se podria confirmar adecuadamente que el valor que este en esta variable se adecuado.
+
+Part IV - Performance Evaluation 
+
+A single thread Time = 
+As many threads as processing cores (have the program determine this using the Runtime API). Time:
+As many threads as twice the number of processing cores. Time:
+50 threads Time:
+100 threads Time:
