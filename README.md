@@ -63,6 +63,10 @@ As many threads as twice the number of processing cores. Time: 30.015
 ![](Images/imagen11.png)
 
 
+**Tabla**
+![](Images/imagen12.png)
+
+
 **Why is the best performance not achieved with the 500 threads? How is this performance compared when using 200 ?.**
 
 Al momento de realizar la operacion con 500 threads se puede observar que este proceso toma unos cuantos segundos mas que si se realizara con 100, esto se debe a que entre mas hilos se tengan y esta cantidad sea mayor al numero de nucleos disponibles en el sistema operativo, no todos los hilos podran correr de manera paralela, si no que empezaran a ir uno detras del otro, entonces se tiene que ciertos hilos tienen una asignacion determinada por el sitema operativo, pero en donde al haber demasiados hilos, muchos se veran negativamente afectados por la asignacion 'justa' del tiempo de computo y al bajar la cantidad de hilos a 200 se observa este tiempo se ajusta un poco al tiempo de los 100 threads
