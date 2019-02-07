@@ -21,22 +21,22 @@ As many threads as twice the number of processing cores. Time: 30.015
 100 threads Time: 0.941
 
 **1 thread**
-![](images/Imagen1.png)
-![](images/imagen2.png)
+![](Images/Imagen1.png)
+![](Images/imagen2.png)
 
 **2 threads**
-![](images/imagen3.png)
-![](images/imagen4.png)
+![](Images/imagen3.png)
+![](Images/imagen4.png)
 
 **4 threads** 
-![](images/imagen5.png)
-![](images/imagen6.png)
+![](Images/imagen5.png)
+![](Images/imagen6.png)
 
 **50 threads** 
-![](images/imagen7.png)
-![](images/imagen8.png)
-![](images/imagen9.png)
+![](Images/imagen7.png)
+![](Images/imagen8.png)
+![](Images/imagen9.png)
 
 **100 threads**
-![](images/imagen10.png)
-![](images/imagen11.png)
+![](Images/imagen10.png)
+![](Images/imagen11.png)
