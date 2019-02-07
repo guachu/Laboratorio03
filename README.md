@@ -68,4 +68,11 @@ As many threads as twice the number of processing cores. Time: 30.015
 Al momento de realizar la operacion con 500 threads se puede observar que este proceso toma unos cuantos segundos mas que si se realizara con 100, esto se debe a que entre mas hilos se tengan y esta cantidad sea mayor al numero de nucleos disponibles en el sistema operativo, no todos los hilos podran correr de manera paralela, si no que empezaran a ir uno detras del otro, entonces se tiene que ciertos hilos tienen una asignacion determinada por el sitema operativo, pero en donde al haber demasiados hilos, muchos se veran negativamente afectados por la asignacion 'justa' del tiempo de computo y al bajar la cantidad de hilos a 200 se observa este tiempo se ajusta un poco al tiempo de los 100 threads
 
 
+**How does the solution behave using as many processing threads as cores compared to the result of using twice as much?**
+
+Se puede observar que cuando se utilizan la misma cantidad de hilos que de nucleos el tiempo de ejecucion va a ser bajo, pero al aumentarle la cantidad al doble se observa como este tiempo se va a ver disminuido aumentando asi la eficiencia del trabajo de cada uno de los hilos
+
+**According to the above, if for this problem instead of 100 threads in a single CPU could be used 1 thread in each of 100 hypothetical machines, Amdahls law would apply better ?. If x threads are used instead of 100/x distributed machines (where x is the number of cores of these machines), would it be improved? Explain your answer.**
+
+Basandonos en la suposicion de que el nucleo este totalmente dedicado al proceso de un hilo, el tiempo de ejecucion si se tienen 100 maquinas corriendo cada una u hilo sera similar al de ejecutarlos todos en un solo computador, pero al ver en la practica que los nucleos de un sistema operativo no se van a dedicar completamente a un solo hilo, se vera que utilizar en 100 maquinas un hilo en cada una sera mas eficiente.
 
