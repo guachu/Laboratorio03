@@ -20,4 +20,13 @@ As many threads as twice the number of processing cores. Time: 30.015
 50 threads Time: 1.958
 100 threads Time: 0.941
 
+1 thread
+
+2 threads
+
+4 threads 
+
+50 threads 
+
+100 threads
 
