@@ -51,7 +51,7 @@ As many threads as twice the number of processing cores. Time: 30.015
 
 ![](Images/imagen7.png)
 
-![](Images/imagen8.png)
+![](Images/Imagen8.png)
 
 ![](Images/imagen9.png)
 
@@ -64,7 +64,7 @@ As many threads as twice the number of processing cores. Time: 30.015
 
 
 **Tabla**
-![](Images/imagen12.png)
+![](Images/Imagen12.png)
 
 
 **Why is the best performance not achieved with the 500 threads? How is this performance compared when using 200 ?.**
