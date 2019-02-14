@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import main.java.edu.eci.arsw.spamkeywordsdatasource.HostBlacklistsDataSourceFacade;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,6 +27,8 @@ public class HostBlackListsValidator {
     private int maximoEstandar;
     private int conteoResidual = 0;
     LinkedList<Integer> blackListOcurrences=new LinkedList<>();
+    AtomicInteger globalCounter = new AtomicInteger();
+    
     /**
      * Check the given host's IP address in all the available black lists,
      * and report it as NOT Trustworthy when such IP was reported in at least
@@ -54,7 +57,7 @@ public class HostBlackListsValidator {
         }
         for(int i = 1; i <= conteoResidual; i++){
             String nombre = "thread#" + i;
-            ThreadC nodo = new ThreadC(nombre, minimo, maximo,ipaddress, blackListOcurrences);
+            ThreadC nodo = new ThreadC(nombre, minimo, maximo,ipaddress, blackListOcurrences,globalCounter,BLACK_LIST_ALARM_COUNT);
             minimo = maximo;
             maximo+= maximoEstandar +1;
             listaThreads.add(nodo);
@@ -65,7 +68,7 @@ public class HostBlackListsValidator {
         
         for(int i = 1; i <= (N-conteoResidual); i++){
             String nombre = "thread#" + (i+conteoResidual);
-            ThreadC nodo = new ThreadC(nombre, minimo, maximo,ipaddress, blackListOcurrences);
+            ThreadC nodo = new ThreadC(nombre, minimo, maximo,ipaddress, blackListOcurrences,globalCounter,BLACK_LIST_ALARM_COUNT);
             minimo = maximo;
             maximo += maximoEstandar;
             listaThreads.add(nodo);

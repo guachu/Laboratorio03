@@ -24,8 +24,10 @@ public class ThreadC implements Runnable{
     private String Ip;
     private HostBlacklistsDataSourceFacade skds;
     LinkedList<Integer> blackListOcurrences;
+    private final AtomicInteger globalCounter;
+    private int limitadorLista;
 
-    public ThreadC(String nombreN, int minN, int maxN, String IpN, LinkedList bl) {
+    public ThreadC(String nombreN, int minN, int maxN, String IpN, LinkedList bl,AtomicInteger GC, int LL) {
         nombre = nombreN;
         min = minN+1;
         max = maxN;
@@ -33,6 +35,8 @@ public class ThreadC implements Runnable{
         skds=HostBlacklistsDataSourceFacade.getInstance();
         blackListOcurrences = bl;
         thread = new java.lang.Thread(this, nombre);
+        globalCounter = GC;
+        limitadorLista = LL;
         Start();
     
     }
@@ -48,9 +52,10 @@ public class ThreadC implements Runnable{
     
     @Override
     public void run() {
-        for (int i=min;i<=max;i++){       
+        for (int i=min;i<=max && globalCounter.get() < limitadorLista;i++){       
             contLists.addAndGet(1);
             if (skds.isInBlackListServer(i, Ip)){
+                globalCounter.addAndGet(1);
                 blackListOcurrences.add(i);
                 numeroFallos.addAndGet(1);
             }
